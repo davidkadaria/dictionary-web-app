@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { getFont, checkFontValidity, setFont } from '../../utils';
 import { fontFamilyOptions } from '../../constants';
 
@@ -9,6 +9,24 @@ function SelectFont() {
 		isCollapsed: false,
 		currentFont: 'sans-serif',
 	});
+
+	const handleFontChange = useCallback((event) => {
+		const font = event.target.value;
+		setState({
+			currentFont: font,
+			isCollapsed: false,
+		});
+		setFont(font);
+	}, []);
+
+	const handleClickOutside = useCallback((event) => {
+		if (!event.target.closest('.SelectFont')) {
+			setState((prevState) => ({
+				...prevState,
+				isCollapsed: false,
+			}));
+		}
+	}, []);
 
 	useEffect(() => {
 		const font = getFont();
@@ -25,16 +43,14 @@ function SelectFont() {
 			}));
 			setFont('sans-serif');
 		}
-	}, []);
 
-	function handleFontChange(event) {
-		const font = event.target.value;
-		setState({
-			currentFont: font,
-			isCollapsed: false,
-		});
-		setFont(font);
-	}
+		// If user clicks outside of the dropdown, close it
+		document.addEventListener('click', handleClickOutside);
+
+		return () => {
+			document.removeEventListener('click', handleClickOutside);
+		};
+	}, [handleClickOutside]);
 
 	return (
 		<div className='SelectFont'>
