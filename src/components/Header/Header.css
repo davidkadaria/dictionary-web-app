@@ -1,0 +1,13 @@
+.Header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 32px;
+	background-color: transparent;
+}
+
+.Header__logo {
+}
+
+.Header__controls {
+}

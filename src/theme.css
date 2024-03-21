@@ -1,0 +1,38 @@
+:root {
+	--primary: #a445ed;
+	--darkest: #050505;
+	--darker: #1f1f1f;
+	--dark: #2d2d2d;
+	--darkgrey: #3a3a3a;
+	--grey: #757575;
+	--lightgrey: #e9e9e9;
+	--light: #f4f4f4;
+	--lightest: #ffffff;
+	--white: #ffffff;
+	--danger: #ff5252;
+
+	/* Fonts */
+	--ff-sans-serif: 'Inter', sans-serif;
+	--ff-serif: 'Lora', serif;
+	--ff-monospace: 'Inconsolata', monospace;
+	/* Default theme */
+	--ff-selected: var(--ff-sans-serif);
+}
+
+:root[data-theme='dark'] {
+	--white: #050505;
+	--dark: #ffffff;
+	--lightest: #1f1f1f;
+}
+
+:root[data-font='sans-serif'] {
+	--ff-selected: var(--ff-sans-serif);
+}
+
+:root[data-font='serif'] {
+	--ff-selected: var(--ff-serif);
+}
+
+:root[data-font='monospace'] {
+	--ff-selected: var(--ff-monospace);
+}
