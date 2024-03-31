@@ -27,3 +27,17 @@
 	margin-inline: 16px;
 	background-color: var(--lightgrey);
 }
+
+@media (min-width: 768px) {
+	.Header {
+		height: 36px;
+	}
+
+	.Header__controls {
+		height: 32px;
+	}
+
+	.Header__vertical-separator {
+		margin-inline: 26px;
+	}
+}

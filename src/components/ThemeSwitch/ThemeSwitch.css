@@ -14,7 +14,7 @@
 	position: relative;
 	width: 40px;
 	height: 100%;
-	margin-right: 10px;
+	margin-right: 12px;
 	border: 0;
 	outline: 0;
 	background-color: var(--grey);
@@ -43,4 +43,10 @@
 :root[data-theme='dark'] .ThemeSwitch__wheel {
 	left: initial;
 	right: 0;
+}
+
+@media (min-width: 768px) {
+	.ThemeSwitch__button {
+		margin-right: 20px;
+	}
 }

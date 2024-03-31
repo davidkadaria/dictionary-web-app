@@ -46,6 +46,9 @@
 
 .SelectFont__item {
 	width: 100%;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 14px;
 	cursor: pointer;
 }
 
@@ -71,4 +74,19 @@
 
 .SelectFont__item-monospace {
 	font-family: var(--ff-monospace);
+}
+
+@media (min-width: 768px) {
+	.SelectFont {
+		width: 120px;
+	}
+
+	.SelectFont__button svg {
+		transform: translateY(80%);
+	}
+
+	.SelectFont__button,
+	.SelectFont__item {
+		font-size: 18px;
+	}
 }
