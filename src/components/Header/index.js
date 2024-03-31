@@ -1,4 +1,5 @@
 import { SelectFont, ThemeSwitch } from '../';
+import { Logo } from '../../icons';
 
 import './Header.css';
 
@@ -6,7 +7,7 @@ function Header() {
 	return (
 		<header className='Header'>
 			<div className='Header__logo'>
-				<img src='/logo.svg' alt='App logo' />
+				<Logo />
 			</div>
 			<div className='Header__controls'>
 				<SelectFont />
