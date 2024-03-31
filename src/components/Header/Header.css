@@ -16,4 +16,14 @@
 }
 
 .Header__controls {
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.Header__vertical-separator {
+	width: 1px;
+	height: 100%;
+	margin-inline: 16px;
+	background-color: var(--lightgrey);
 }

@@ -1,22 +1,10 @@
 .SelectFont {
 	position: relative;
-	width: 100px;
+	width: 96px;
 	height: 24px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-right: 10px;
-}
-
-.SelectFont::after {
-	/* Vertical separator at right */
-	content: '';
-	position: absolute;
-	top: 0;
-	right: -10px;
-	height: 100%;
-	width: 1px;
-	background-color: var(--lightgrey);
 }
 
 .SelectFont__button {

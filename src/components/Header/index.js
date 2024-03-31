@@ -1,4 +1,4 @@
-import { SelectFont } from '../';
+import { SelectFont, ThemeSwitch } from '../';
 
 import './Header.css';
 
@@ -10,6 +10,8 @@ function Header() {
 			</div>
 			<div className='Header__controls'>
 				<SelectFont />
+				<span className='Header__vertical-separator' />
+				<ThemeSwitch />
 			</div>
 		</header>
 	);
