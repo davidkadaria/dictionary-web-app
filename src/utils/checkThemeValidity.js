@@ -5,4 +5,4 @@ function checkThemeValidity(theme) {
 	return false;
 }
 
-export default checkThemeValidity;
+export { checkThemeValidity };
