@@ -8,7 +8,7 @@ const fontFamilyOptions = [
 		value: 'sans-serif',
 	},
 	{
-		label: 'Monospace',
+		label: 'Mono',
 		value: 'monospace',
 	},
 ];
