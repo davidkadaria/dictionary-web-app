@@ -16,23 +16,5 @@
 	<body>
 		<noscript>You need to enable JavaScript to run this app.</noscript>
 		<div id="root"></div>
-		<script>
-			window.addEventListener('DOMContentLoaded', () => {
-				// JavaScript code that is responsible to determine current theme (dark/light) and set it
-				// The current theme value is stored in the localStorage (default: light)
-				const appRoot = document.querySelector('html');
-				const currentTheme = localStorage.getItem('theme') || 'light'; // Default theme value is light
-
-				appRoot.setAttribute('data-theme', currentTheme);
-				localStorage.setItem('theme', currentTheme);
-
-				// There are 3 options of font family: sans-serif, serif, monospace; default: sans-serif
-				// We need to set the font family value to the root element (data-font: [value])
-				const currentFont = localStorage.getItem('font') || 'sans-serif';
-
-				appRoot.setAttribute('data-font', currentFont);
-				localStorage.setItem('font', currentFont);
-			});
-		</script>
 	</body>
 </html>
