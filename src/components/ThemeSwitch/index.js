@@ -17,6 +17,8 @@ function ThemeSwitch() {
 
 		if (!checkThemeValidity(currentTheme)) {
 			setTheme('light');
+		} else {
+			setTheme(currentTheme);
 		}
 	}, []);
 
