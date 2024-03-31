@@ -1,0 +1,46 @@
+.ThemeSwitch {
+	height: 20px;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.ThemeSwitch svg {
+	height: 100%;
+	color: var(--grey);
+}
+
+.ThemeSwitch__button {
+	position: relative;
+	width: 40px;
+	height: 100%;
+	margin-right: 10px;
+	border: 0;
+	outline: 0;
+	background-color: var(--grey);
+	border-radius: 10px;
+}
+
+.ThemeSwitch__wheel {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 14px;
+	height: 14px;
+	margin: 3px;
+	background-color: var(--white);
+	border-radius: 50%;
+}
+
+:root[data-theme='dark'] .ThemeSwitch svg {
+	color: var(--primary);
+}
+
+:root[data-theme='dark'] .ThemeSwitch__button {
+	background-color: var(--primary);
+}
+
+:root[data-theme='dark'] .ThemeSwitch__wheel {
+	left: initial;
+	right: 0;
+}
