@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { getFont, checkFontValidity, setFont } from '../../utils';
 import { fontFamilyOptions } from '../../constants';
+import { IconArrowDown } from '../../icons';
 
 import './SelectFont.css';
 
@@ -63,8 +64,7 @@ function SelectFont() {
 					}))
 				}
 			>
-				{fontFamilyOptions.find((e) => e.value === state.currentFont).label}{' '}
-				<img src='/icon-arrow-down.svg' alt='Arrow' />
+				{fontFamilyOptions.find((e) => e.value === state.currentFont).label} <IconArrowDown />
 			</button>
 			{state.isCollapsed && (
 				<div className='SelectFont__dropdown'>

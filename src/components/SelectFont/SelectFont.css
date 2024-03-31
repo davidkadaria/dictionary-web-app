@@ -21,7 +21,7 @@
 	cursor: pointer;
 }
 
-.SelectFont__button img {
+.SelectFont__button svg {
 	float: right;
 	transform: translateY(50%);
 }
