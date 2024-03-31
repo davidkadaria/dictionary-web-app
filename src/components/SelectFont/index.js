@@ -37,6 +37,7 @@ function SelectFont() {
 				...prevState,
 				currentFont: font,
 			}));
+			setFont(font);
 		} else {
 			setState((prevState) => ({
 				...prevState,
