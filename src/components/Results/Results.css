@@ -27,14 +27,64 @@
 
 .Results__word-phonetic {
 	color: var(--primary);
+	font-family: var(--ff-selected);
+	font-style: normal;
+	font-weight: 400;
+	font-size: 18px;
 }
 
 .Results__audio {
 	width: 48px;
 	height: 48px;
+	color: var(--primary);
+	cursor: pointer;
+}
+
+.Results__audio:active {
+	transform: scale(0.95);
+}
+
+.Results__audio--disabled {
+	opacity: 0.5;
+	pointer-events: none;
 }
 
 .Results__audio svg {
 	width: 100%;
 	height: 100%;
+}
+
+.Results__audio svg circle {
+	opacity: 0.25;
+}
+
+.Results__audio:hover svg circle {
+	opacity: 1;
+}
+
+.Results__audio:hover svg path {
+	fill: var(--white);
+}
+
+@media (min-width: 768px) {
+	.Results {
+		margin-top: 44px;
+	}
+
+	.Results__header {
+		height: 116px;
+	}
+
+	.Results__word {
+		font-size: 64px;
+	}
+
+	.Results__word-phonetic {
+		font-size: 24px;
+	}
+
+	.Results__audio {
+		width: 74px;
+		height: 74px;
+	}
 }
