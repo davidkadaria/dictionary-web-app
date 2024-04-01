@@ -1,0 +1,51 @@
+.RelatedWords {
+	width: 100%;
+	margin-top: 12px;
+}
+
+.RelatedWords__heading {
+	display: inline-block;
+	margin-right: 24px;
+	color: var(--grey);
+	font-family: var(--ff-selected);
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+}
+
+.RelatedWords__words {
+	display: inline-flex;
+	flex-wrap: wrap;
+}
+
+.RelatedWords__word {
+	margin-right: 12px;
+	color: var(--primary);
+	font-family: var(--ff-selected);
+	font-style: normal;
+	font-weight: 700;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.RelatedWords__word:last-child {
+	margin-right: 0;
+}
+
+.RelatedWords__word:hover {
+	text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+	.RelatedWords {
+		margin-top: 20px;
+	}
+
+	.RelatedWords__heading {
+		font-size: 20px;
+	}
+
+	.RelatedWords__word {
+		font-size: 20px;
+	}
+}
