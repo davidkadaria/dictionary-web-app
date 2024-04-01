@@ -1,0 +1,75 @@
+.WordMeaning {
+	width: 100%;
+}
+
+.WordMeaning__part-of-speech {
+	display: flex;
+	align-items: center;
+	margin-block: 32px;
+	font-family: var(--ff-selected);
+	font-style: italic;
+	font-weight: 700;
+	font-size: 18px;
+}
+
+.WordMeaning__part-of-speech::after {
+	content: '';
+	flex: 1;
+	margin-left: 16px;
+	height: 1px;
+	background-color: var(--lightgrey);
+}
+
+.WordMeaning__heading {
+	margin-bottom: 16px;
+	color: var(--grey);
+	font-family: var(--ff-selected);
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+}
+
+.WordMeaning__definitions {
+	list-style: outside;
+}
+
+.WordMeaning__definition {
+	display: list-item;
+	margin-left: 1em;
+	margin-bottom: 12px;
+	font-family: var(--ff-selected);
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+}
+
+.WordMeaning__definition:last-child {
+	margin-bottom: 0;
+}
+
+.WordMeaning__definition::marker {
+	color: var(--primary);
+}
+
+.WordMeaning__definition-example {
+	display: block;
+	margin-top: 12px;
+	color: var(--grey);
+}
+
+@media (min-width: 768px) {
+	.WordMeaning__part-of-speech {
+		margin-block: 40px;
+		font-size: 24px;
+	}
+
+	.WordMeaning__heading {
+		margin-bottom: 24px;
+		font-size: 20px;
+	}
+
+	.WordMeaning__definition {
+		margin-left: calc(1em + 22px);
+		font-size: 18px;
+	}
+}

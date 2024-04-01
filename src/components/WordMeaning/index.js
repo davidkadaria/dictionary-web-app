@@ -11,6 +11,9 @@ function WordMeaning({ data }) {
 				{data.definitions.map((definition, index) => (
 					<li key={index} className='WordMeaning__definition'>
 						{definition.definition}
+						{definition?.example && (
+							<span className='WordMeaning__definition-example'>“{definition.example}”</span>
+						)}
 					</li>
 				))}
 			</ul>
