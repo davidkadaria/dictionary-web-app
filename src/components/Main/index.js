@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { fetchWordInformation } from '../../utils';
 
-import { SearchForm } from '../';
+import { SearchForm, Results } from '../';
 
 import './Main.css';
 
@@ -25,7 +25,11 @@ function Main() {
 
 		// Fetch word information
 		fetchWordInformation(searchFieldValue).then((data) => {
-			setResults(data);
+			if (!data.error) {
+				setResults(data[0]);
+			} else {
+				setResults(data);
+			}
 		});
 	}
 
@@ -36,6 +40,7 @@ function Main() {
 				hasValidationError={validationError}
 				ref={searchFieldRef}
 			/>
+			{results && !results.error && <Results data={results} />}
 		</main>
 	);
 }
