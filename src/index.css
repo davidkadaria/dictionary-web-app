@@ -12,6 +12,11 @@ body {
 	font-family: var(--ff-selected);
 }
 
+:root[data-theme='dark'] body {
+	background-color: var(--darkest);
+	color: var(--white);
+}
+
 .container {
 	width: 100%;
 	padding: 24px;
