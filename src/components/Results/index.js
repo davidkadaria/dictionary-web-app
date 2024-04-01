@@ -7,7 +7,7 @@ import './Results.css';
 function Results({ data }) {
 	const audio = data.phonetics.find(
 		(phonetic) => phonetic.audio && phonetic.audio.length > 5 // Some audio files are empty or contain only a few bytes of dummy data
-	).audio;
+	)?.audio;
 	const [play] = useSound(audio);
 
 	return (
