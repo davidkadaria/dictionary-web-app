@@ -5,6 +5,9 @@ import { SearchForm, Results } from '../';
 
 import './Main.css';
 
+// Cache for already fetched words
+const catchedWords = {};
+
 function Main() {
 	const [results, setResults] = useState();
 	const [validationError, setValidationError] = useState(false);
@@ -37,15 +40,22 @@ function Main() {
 			}
 
 			// Fetch word information
-			fetchWordInformation(searchFieldValue).then((data) => {
-				if (!data.error) {
-					setResults(data[0]);
-				} else {
-					setResults(data);
-				}
-				// Scroll to top of the page
-				scrollToTop();
-			});
+			if (catchedWords[searchFieldValue]) {
+				setResults(catchedWords[searchFieldValue]);
+			} else {
+				fetchWordInformation(searchFieldValue).then((data) => {
+					if (!data.error) {
+						setResults(data[0]);
+						catchedWords[searchFieldValue] = data[0];
+					} else {
+						setResults(data);
+						catchedWords[searchFieldValue] = data;
+					}
+
+					// Scroll to top of the page
+					scrollToTop();
+				});
+			}
 		},
 		[validationError]
 	);
