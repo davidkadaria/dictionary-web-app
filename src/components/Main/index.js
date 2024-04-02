@@ -1,5 +1,5 @@
-import { useState, useRef } from 'react';
-import { fetchWordInformation } from '../../utils';
+import { useState, useRef, useEffect, useCallback } from 'react';
+import { fetchWordInformation, getQueryParam, setQueryParams, scrollToTop } from '../../utils';
 
 import { SearchForm, Results } from '../';
 
@@ -11,27 +11,68 @@ function Main() {
 
 	const searchFieldRef = useRef();
 
-	async function handleSubmit(event) {
-		event.preventDefault();
-		const searchFieldValue = searchFieldRef.current.value;
+	const fetchData = useCallback(
+		(word) => {
+			let searchFieldValue;
 
-		// Validate search field
-		if (!searchFieldValue || searchFieldValue.trim() === '') {
-			setValidationError(true);
-			return;
-		} else if (validationError) {
-			setValidationError(false);
-		}
-
-		// Fetch word information
-		fetchWordInformation(searchFieldValue).then((data) => {
-			if (!data.error) {
-				setResults(data[0]);
+			if (word) {
+				searchFieldValue = word;
+				searchFieldRef.current.value = searchFieldValue;
 			} else {
-				setResults(data);
+				searchFieldValue = searchFieldRef.current.value;
 			}
-		});
+
+			// Validate search field
+			if (!searchFieldValue || searchFieldValue.trim() === '') {
+				setValidationError(true);
+				return;
+			} else if (validationError) {
+				setValidationError(false);
+			}
+
+			// Set query param if needed
+			const currentQuery = getQueryParam('word');
+			if (currentQuery !== searchFieldValue) {
+				setQueryParams('word', searchFieldValue);
+			}
+
+			// Fetch word information
+			fetchWordInformation(searchFieldValue).then((data) => {
+				if (!data.error) {
+					setResults(data[0]);
+				} else {
+					setResults(data);
+				}
+				// Scroll to top of the page
+				scrollToTop();
+			});
+		},
+		[validationError]
+	);
+
+	const handleHistoryChange = useCallback(() => {
+		const query = getQueryParam('word');
+		if (query) {
+			fetchData(query);
+		}
+	}, [fetchData]);
+
+	function handleSubmit(event) {
+		event.preventDefault();
+		fetchData();
 	}
+
+	useEffect(() => {
+		const query = getQueryParam('word');
+		if (query) {
+			fetchData(query);
+		}
+		window.addEventListener('popstate', handleHistoryChange);
+
+		return () => {
+			window.removeEventListener('popstate', handleHistoryChange);
+		};
+	}, [fetchData, handleHistoryChange]);
 
 	return (
 		<main className='Main'>
@@ -40,7 +81,7 @@ function Main() {
 				hasValidationError={validationError}
 				ref={searchFieldRef}
 			/>
-			{results && !results.error && <Results data={results} />}
+			{results && !results.error && <Results data={results} fetchData={fetchData} />}
 		</main>
 	);
 }
