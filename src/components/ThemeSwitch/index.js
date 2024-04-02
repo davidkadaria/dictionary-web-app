@@ -24,9 +24,9 @@ function ThemeSwitch() {
 
 	return (
 		<div className='ThemeSwitch' onClick={handleThemeChange}>
-			<button className='ThemeSwitch__button'>
+			<div className='ThemeSwitch__button'>
 				<span className='ThemeSwitch__wheel' />
-			</button>
+			</div>
 			<IconMoon />
 		</div>
 	);
