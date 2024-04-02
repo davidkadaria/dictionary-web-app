@@ -7,3 +7,4 @@ export * from './Results';
 export * from './WordMeaning';
 export * from './RelatedWords';
 export * from './LoadingPlaceholder';
+export * from './ResultsError';
