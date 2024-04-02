@@ -20,6 +20,10 @@
 	background-color: var(--lightgrey);
 }
 
+:root[data-theme='dark'] .WordMeaning__part-of-speech::after {
+	background-color: var(--darkgrey);
+}
+
 .WordMeaning__heading {
 	margin-bottom: 16px;
 	color: var(--grey);
