@@ -5,3 +5,4 @@ export * from './getFont';
 export * from './setFont';
 export * from './checkFontValidity';
 export * from './fetchWordInformation';
+export * from './queryParams';
