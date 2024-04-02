@@ -6,3 +6,4 @@ export * from './SearchForm';
 export * from './Results';
 export * from './WordMeaning';
 export * from './RelatedWords';
+export * from './LoadingPlaceholder';
