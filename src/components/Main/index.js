@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { fetchWordInformation, getQueryParam, setQueryParams, scrollToTop } from '../../utils';
+import { defaultErrorResults } from '../../constants';
 
-import { SearchForm, Results, LoadingPlaceholder } from '../';
+import { SearchForm, Results, LoadingPlaceholder, ResultsError } from '../';
 
 import './Main.css';
 
@@ -58,6 +59,9 @@ function Main() {
 						// Scroll to top of the page
 						scrollToTop();
 					})
+					.catch(() => {
+						setResults(defaultErrorResults);
+					})
 					.finally(() => {
 						setLoading(false);
 					});
@@ -102,7 +106,7 @@ function Main() {
 			) : results && !results.error ? (
 				<Results data={results} fetchData={fetchData} />
 			) : results && results.error ? (
-				<p className='Main__error'>dsdasdsa</p>
+				<ResultsError data={results} />
 			) : null}
 		</main>
 	);
