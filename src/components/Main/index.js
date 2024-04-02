@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { fetchWordInformation, getQueryParam, setQueryParams, scrollToTop } from '../../utils';
 
-import { SearchForm, Results } from '../';
+import { SearchForm, Results, LoadingPlaceholder } from '../';
 
 import './Main.css';
 
@@ -10,6 +10,7 @@ const catchedWords = {};
 
 function Main() {
 	const [results, setResults] = useState();
+	const [loading, setLoading] = useState(false);
 	const [validationError, setValidationError] = useState(false);
 
 	const searchFieldRef = useRef();
@@ -43,18 +44,23 @@ function Main() {
 			if (catchedWords[searchFieldValue]) {
 				setResults(catchedWords[searchFieldValue]);
 			} else {
-				fetchWordInformation(searchFieldValue).then((data) => {
-					if (!data.error) {
-						setResults(data[0]);
-						catchedWords[searchFieldValue] = data[0];
-					} else {
-						setResults(data);
-						catchedWords[searchFieldValue] = data;
-					}
+				setLoading(true);
+				fetchWordInformation(searchFieldValue)
+					.then((data) => {
+						if (!data.error) {
+							setResults(data[0]);
+							catchedWords[searchFieldValue] = data[0];
+						} else {
+							setResults(data);
+							catchedWords[searchFieldValue] = data;
+						}
 
-					// Scroll to top of the page
-					scrollToTop();
-				});
+						// Scroll to top of the page
+						scrollToTop();
+					})
+					.finally(() => {
+						setLoading(false);
+					});
 			}
 		},
 		[validationError]
@@ -91,7 +97,13 @@ function Main() {
 				hasValidationError={validationError}
 				ref={searchFieldRef}
 			/>
-			{results && !results.error && <Results data={results} fetchData={fetchData} />}
+			{loading ? (
+				<LoadingPlaceholder />
+			) : results && !results.error ? (
+				<Results data={results} fetchData={fetchData} />
+			) : results && results.error ? (
+				<p className='Main__error'>dsdasdsa</p>
+			) : null}
 		</main>
 	);
 }
