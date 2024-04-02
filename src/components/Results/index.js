@@ -4,7 +4,7 @@ import { IconPlay } from '../../icons';
 
 import './Results.css';
 
-function Results({ data }) {
+function Results({ data, fetchData }) {
 	const audio = data.phonetics.find(
 		(phonetic) => phonetic.audio && phonetic.audio.length > 5 // Some audio files are empty or contain only a few bytes of dummy data
 	)?.audio;
@@ -25,7 +25,7 @@ function Results({ data }) {
 				</div>
 			</div>
 			{data.meanings.map((meaning, index) => (
-				<WordMeaning key={index} data={meaning} />
+				<WordMeaning key={index} data={meaning} fetchData={fetchData} />
 			))}
 		</section>
 	);

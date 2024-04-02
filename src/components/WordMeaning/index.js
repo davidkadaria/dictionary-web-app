@@ -2,7 +2,7 @@ import { RelatedWords } from '../';
 
 import './WordMeaning.css';
 
-function WordMeaning({ data }) {
+function WordMeaning({ data, fetchData }) {
 	return (
 		<div className='WordMeaning'>
 			<h2 className='WordMeaning__part-of-speech'>{data.partOfSpeech}</h2>
@@ -18,10 +18,10 @@ function WordMeaning({ data }) {
 				))}
 			</ul>
 			{data.synonyms && data.synonyms.length > 0 && (
-				<RelatedWords heading='Synonyms' words={data.synonyms} />
+				<RelatedWords heading='Synonyms' words={data.synonyms} fetchData={fetchData} />
 			)}
 			{data.antonyms && data.antonyms.length > 0 && (
-				<RelatedWords heading='Antonyms' words={data.antonyms} />
+				<RelatedWords heading='Antonyms' words={data.antonyms} fetchData={fetchData} />
 			)}
 		</div>
 	);
