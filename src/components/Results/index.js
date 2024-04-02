@@ -1,6 +1,6 @@
 import useSound from 'use-sound';
 import { WordMeaning } from '../';
-import { IconPlay } from '../../icons';
+import { IconPlay, IconNewWindow } from '../../icons';
 
 import './Results.css';
 
@@ -24,9 +24,30 @@ function Results({ data, fetchData }) {
 					<IconPlay />
 				</div>
 			</div>
+
 			{data.meanings.map((meaning, index) => (
 				<WordMeaning key={index} data={meaning} fetchData={fetchData} />
 			))}
+
+			<div className='Results__footer'>
+				<span className='Results__horizontal-line' />
+				{data.sourceUrls && data.sourceUrls.length > 0 && (
+					<div className='Results__footer-info'>
+						<h3 className='Results__footer-heading'>Source</h3>
+						{data.sourceUrls.map((url, index) => (
+							<a
+								className='Results__footer-source-url'
+								href={url}
+								key={`${url}-${index}`}
+								target='_blank'
+								rel='noreferrer noopener'
+							>
+								{url} <IconNewWindow />
+							</a>
+						))}
+					</div>
+				)}
+			</div>
 		</section>
 	);
 }
