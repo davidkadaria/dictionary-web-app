@@ -86,8 +86,6 @@ function Main() {
 		const query = getQueryParam('word');
 		if (query) {
 			fetchData(query);
-		} else {
-			fetchData('welcome');
 		}
 		window.addEventListener('popstate', handleHistoryChange);
 
