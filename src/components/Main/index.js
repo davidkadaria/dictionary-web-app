@@ -31,7 +31,7 @@ function Main() {
 			if (!searchFieldValue || searchFieldValue.trim() === '') {
 				setValidationError(true);
 				return;
-			} else if (validationError) {
+			} else {
 				setValidationError(false);
 			}
 
@@ -67,7 +67,7 @@ function Main() {
 					});
 			}
 		},
-		[validationError]
+		[]
 	);
 
 	const handleHistoryChange = useCallback(() => {
@@ -86,6 +86,8 @@ function Main() {
 		const query = getQueryParam('word');
 		if (query) {
 			fetchData(query);
+		} else {
+			fetchData('welcome');
 		}
 		window.addEventListener('popstate', handleHistoryChange);
 
