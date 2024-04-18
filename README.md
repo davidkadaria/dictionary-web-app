@@ -32,7 +32,7 @@ Users are able to:
 
 ### Links
 
-- Solution URL: [Github repository](https://github.com/davidkadaria/dictionary-web-app)
+- Solution URL: [Frontend Mentor](https://www.frontendmentor.io/solutions/dictionary-web-app-QmIgVNNKH6)
 - Live Site URL: [Vercel](https://dictionary-web-app-five-gold.vercel.app)
 
 ### Built with
