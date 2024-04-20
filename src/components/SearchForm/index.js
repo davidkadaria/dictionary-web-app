@@ -23,9 +23,9 @@ const SearchForm = forwardRef(function SearchForm(props, ref) {
 					placeholder='Search for any word…'
 					ref={ref}
 				/>
-				<div className='SearchForm__button'>
+				<button className='SearchForm__button'>
 					<IconSearch />
-				</div>
+				</button>
 			</div>
 			{hasValidationError && <p className='SearchForm__error'>Whoops, can't be empty…</p>}
 		</form>
